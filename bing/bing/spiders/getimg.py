@@ -11,5 +11,5 @@ class GetimgSpider(scrapy.Spider):
 
     def parse(self, response):
         item = BingItem()
-       	item["background"] = re.findall(r'g_img={url: "(.*?)"',response.body.decode("utf-8"))
+        item["background"] = re.findall(r'g_img={url: "(.*?)"',response.body.decode("utf-8"))
         yield item
