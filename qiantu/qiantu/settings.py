@@ -16,8 +16,36 @@ NEWSPIDER_MODULE = 'qiantu.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0'
+USER_AGENT = [
+    'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.22 Safari/537.36 SE 2.X MetaSr 1.0',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko',
+    'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0',
+    'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36 OPR/38.0.2220.41',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.21 Safari/537.36',
+    'Mozilla/5.0 (X11; Linux i686; rv:50.0) Gecko/20100101 Firefox/50.0',
+    'Mozilla/5.0 (X11; OpenBSD amd64; rv:49.0) Gecko/20100101 Firefox/49.0',
+    'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:49.0) Gecko/20100101 Firefox/49.0',
+    'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.21 (KHTML, like Gecko) rekonq/2.4.2 Safari/537.21',
+    'Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36'
+]
 
+PROXIES = [
+    {'ip_port': '27.184.142.250:8888', 'user_pass': ''},
+    {'ip_port': '122.5.227.57:8888', 'user_pass': ''},
+    {'ip_port': '115.159.185.186:8088', 'user_pass': ''},
+    {'ip_port': '124.88.67.63:80', 'user_pass': ''},
+    {'ip_port': '202.171.253.72:80', 'user_pass': ''},
+    {'ip_port': '122.72.32.73:80', 'user_pass': ''},
+    {'ip_port': '123.65.217.151:9797', 'user_pass': ''},
+    {'ip_port': '124.206.133.227:80', 'user_pass': ''},
+    {'ip_port': '60.191.160.20:3128', 'user_pass': ''},
+    {'ip_port': '113.200.159.155:9999', 'user_pass': ''},
+    {'ip_port': '112.228.35.24:8888', 'user_pass': ''},
+    {'ip_port': '182.37.5.12:8888', 'user_pass': ''},
+    {'ip_port': '122.72.32.74:80', 'user_pass': ''}
+]
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
@@ -52,9 +80,12 @@ COOKIES_ENABLED = False
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
+DOWNLOADER_MIDDLEWARES = {
 #    'qiantu.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+    'qiantu.middlewares.RandomUserAgent': 1, #随机user agent
+    'qiantu.middlewares.ProxyMiddleware': 100, #代理需要用到
+    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110, #代理需要用到
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
