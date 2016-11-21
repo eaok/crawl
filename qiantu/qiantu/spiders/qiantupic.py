@@ -10,7 +10,7 @@ class QiantupicSpider(scrapy.Spider):
 
 #第一层循环为提取所有的分类链接
     def parse(self, response):
-        urldata=response.xpath("//div[@class='moren-content']//a/@href").extract()
+        urldata=response.xpath("//div[@class='moren-content']/a/@href").extract()
 
         for i in range(0,len(urldata)):
             thisurldata=urldata[i]
@@ -32,10 +32,10 @@ class QiantupicSpider(scrapy.Spider):
 
 #返回每页中的图片链接
     def next2(self, response):
-        print("\n\nCrawling page" + "---------------------------" + response.url)
+        print("\nCrawling page" + "======================================== " + response.url)
 
         item = QiantuItem()
-        item["url"] = response.xpath("//a[@class='thumb-box']/img/@src1").extract()
+        item["url"] = response.xpath("//a[@class='thumb-box']/img[not(@class)]/@src | //a[@class='thumb-box']/img/@src1").extract()
         item["folder_name"] = response.url.split('/')[3]
 
         yield item
