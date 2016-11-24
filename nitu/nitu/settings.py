@@ -42,12 +42,15 @@ USER_AGENT = [
 
 PROXIES = [
     {'ip_port': '115.159.185.186:8088', 'user_pass': ''},
-    {'ip_port': '122.72.32.73:80', 'user_pass': ''},
     {'ip_port': '123.65.217.151:9797', 'user_pass': ''},
     {'ip_port': '60.191.160.20:3128', 'user_pass': ''},
     {'ip_port': '182.37.5.12:8888', 'user_pass': ''},
-    {'ip_port': '122.72.32.88:80', 'user_pass': ''},
-    {'ip_port': '122.72.32.74:80', 'user_pass': ''}
+    {'ip_port': '202.171.253.72:80', 'user_pass': ''},
+    {'ip_port': '182.37.5.12:8888', 'user_pass': ''},
+    {'ip_port': '113.97.207.153:8118', 'user_pass': ''},
+    {'ip_port': '61.146.203.114:8118', 'user_pass': ''},
+    {'ip_port': '183.31.249.248:9797', 'user_pass': ''},
+    {'ip_port': '27.46.32.228:9797', 'user_pass': ''},
 ]
 
 # Obey robots.txt rules

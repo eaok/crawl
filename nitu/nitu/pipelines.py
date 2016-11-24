@@ -15,23 +15,20 @@ class NituPipeline(object):
         if not os.path.exists(path):
             os.mkdir(path)
 
-        t = open("output/url", "a")
-        for i in range(len(item["pic_urls"])):
-            try:
-                pic_url = item["pic_urls"][i]
+        f = open("output/url", "a")
+        try:
+            pic_url = item["pic_url"][0]
+            if not os.path.exists(path + '/' +item["group_name"]):
+                os.mkdir(path + '/' + item["group_name"])
 
-                if not os.path.exists(path + '/' +item["group_name"]):
-                    os.mkdir(path + '/' + item["group_name"])
+            file_name = path + '/' + item["group_name"] + '/' + item["pic_name"] + '.' + pic_url.split('.')[-1]
+            f.write(pic_url + '\t' + file_name + '\n')
+            f.flush()
+            print(pic_url + '\t' + file_name)
+#            urllib.request.urlretrieve(pic_url, filename=file_name)
+        except Exception as e:
+            pass
 
-                file = path + '/' + item["group_name"] + '/' + item["pic_name"] + '.' + pic_url.split('.')[-1]
-                t.write(file + '\n')
-                t.flush()
-                print(file)
-#                urllib.request.urlretrieve(pic_url, filename=file)
-
-
-            except Exception as e:
-                pass
-        t.close()
+        f.close()
 
         return item

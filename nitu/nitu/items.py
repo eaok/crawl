@@ -10,6 +10,6 @@ import scrapy
 
 class NituItem(scrapy.Item):
     # define the fields for your item here like:
-    pic_urls = scrapy.Field()
+    pic_url = scrapy.Field()
     pic_name = scrapy.Field()
     group_name = scrapy.Field()
