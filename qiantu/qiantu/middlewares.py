@@ -23,10 +23,10 @@ class ProxyMiddleware(object):
 
         if proxy['user_pass'] == '':
             pass
-            print("************************************************** Proxy no pass")
+            print("************************************************** Proxy no pass\t" + proxy['ip_port'])
             request.meta['proxy'] = "http://" + proxy['ip_port']
         else:
-#            print("************************************************** Proxy have pass"])
+            print("************************************************** Proxy have pass\t" + proxy['ip_port'])
             request.meta['proxy'] = "http://" + proxy['ip_port']
             encoded_user_pass = base64.b64encode(proxy['user_pass'].encode(encoding="utf-8"))
             request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass.decode()

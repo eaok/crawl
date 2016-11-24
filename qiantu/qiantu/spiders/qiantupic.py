@@ -13,8 +13,8 @@ class QiantupicSpider(scrapy.Spider):
         urldata=response.xpath("//div[@class='moren-content']/a/@href").extract()
 
         for i in range(0,len(urldata)):
-            thisurldata=urldata[i]
-            yield Request(url=thisurldata,callback=self.next)
+            thisurldata = urldata[i]
+            yield Request(thisurldata, callback=self.next)
 
     #提取分类页面下的页面链接
     def next(self, response):
@@ -26,7 +26,7 @@ class QiantupicSpider(scrapy.Spider):
 
             for j in range(1,int(page) + 1):      #j从1开始的，所以要加1
                 pageurl = thisurl+"id-"+str(j) + ".html"
-                yield Request(url = pageurl, callback = self.next2)
+                yield Request(pageurl, callback=self.next2)
         else:
             pass
 

@@ -22,15 +22,15 @@ class QiantuPipeline(object):
                 pic_url = item["urls"][i]
                 pat = "http://pic.qiantucdn.com/58pic/(.*?).jpg!qt"
                 id = re.compile(pat).findall(pic_url)
-                thistrueurl = "http://pic.qiantucdn.com/58pic/" + id[0] + "_1024.jpg"
+                true_url = "http://pic.qiantucdn.com/58pic/" + id[0] + "_1024.jpg"
 
                 if not os.path.exists(path + '/' +item["folder_name"]):
                     os.mkdir(path + '/' + item["folder_name"])
 
-                file = path + '/' + item['folder_name'] + '/' + thistrueurl.split('/')[-1]
-                f.write(pic_url + '\t' + file + '\n')
+                file = path + '/' + item['folder_name'] + '/' + true_url.split('/')[-1]
+                f.write(true_url + '\t' + file + '\n')
                 f.flush()
-                print(pic_url + '\t' + file)
+                print(true_url + '\t' + file)
 
 #                urllib.request.urlretrieve(thistrueurl, file)
 
