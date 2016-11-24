@@ -19,18 +19,30 @@ class getProxy():
 
     def loop(self,page=5):
         for i in range(1,page):
+            print(i)
             self.getContent(i)
 
     def getContent(self, num):
-
-        #国内高匿
-        url = "http://www.xicidaili.com/nn/" + str(num)
-        try:
-            req = urllib.request.Request(url, headers=self.header)
-            html=urllib.request.urlopen(req).read()
-        except urllib.error.HTTPError as e:
-            print(e.code)
-            print(e.read().decode("utf8"))
+        reconnect = 4
+        for i in range(0, reconnect):
+            #国内高匿,国外为wn
+            url = "http://www.xicidaili.com/nn/" + str(num)
+            try:
+                opener = urllib.request.build_opener()
+                urllib.request.install_opener(opener)
+                req = urllib.request.Request(url, headers=self.header)
+                html = urllib.request.urlopen(req, timeout=5).read()
+                break
+            except:
+#            except urllib.error.HTTPError as e:
+                if i < reconnect - 1:
+                    print("timeout please wait to reconnect!")
+                    continue
+                else:
+                    print('=====================================')
+                    return
+#                    print(e.code)
+#                    print(e.read().decode("utf8"))
 
         et = etree.HTML(html.decode('utf-8'))
         ips = et.xpath('//tr/td[2]/text()')
@@ -57,7 +69,7 @@ class getProxy():
         #使用代理访问验证代理是否有效
 #        socket.setdefaulttimeout(1)
         try:
-            response = urllib.request.urlopen(req, timeout=2)
+            response = urllib.request.urlopen(req, timeout=0.5)
             if response.code==200:
                 print(ip + ':' + port + "\tcan work")
                 return True
