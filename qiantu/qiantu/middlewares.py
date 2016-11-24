@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 import random
 import base64
 from qiantu.settings import PROXIES
@@ -13,7 +13,7 @@ class RandomUserAgent(object):
         user_agent = random.choice(USER_AGENT)
         if user_agent:
             request.headers.setdefault('User-Agent', user_agent)
-        print("\n************************** " + user_agent)
+            print("************************************************** use user_agent")
 
 # Start your middleware class
 class ProxyMiddleware(object):
@@ -22,11 +22,12 @@ class ProxyMiddleware(object):
         proxy = random.choice(PROXIES)
 
         if proxy['user_pass'] == '':
-            print("************************** Proxy no pass\t" + proxy['ip_port'])
+            pass
+            print("************************************************** Proxy no pass")
             request.meta['proxy'] = "http://" + proxy['ip_port']
         else:
+#            print("************************************************** Proxy have pass"])
             request.meta['proxy'] = "http://" + proxy['ip_port']
             encoded_user_pass = base64.b64encode(proxy['user_pass'].encode(encoding="utf-8"))
             request.headers['Proxy-Authorization'] = 'Basic ' + encoded_user_pass.decode()
-            print("************************** Proxy have pass\t" + proxy['ip_port'])
 

@@ -16,22 +16,26 @@ class QiantuPipeline(object):
         if not os.path.exists(path):
             os.mkdir(path)
 
-        for i in range(0, len(item["url"])):
+        f = open("output/url", "a")
+        for i in range(0, len(item["urls"])):
             try:
-                thisurl = item["url"][i]
+                pic_url = item["urls"][i]
                 pat = "http://pic.qiantucdn.com/58pic/(.*?).jpg!qt"
-                id = re.compile(pat).findall(thisurl)
+                id = re.compile(pat).findall(pic_url)
                 thistrueurl = "http://pic.qiantucdn.com/58pic/" + id[0] + "_1024.jpg"
 
                 if not os.path.exists(path + '/' +item["folder_name"]):
                     os.mkdir(path + '/' + item["folder_name"])
 
                 file = path + '/' + item['folder_name'] + '/' + thistrueurl.split('/')[-1]
-                print(file)
+                f.write(pic_url + '\t' + file + '\n')
+                f.flush()
+                print(pic_url + '\t' + file)
 
 #                urllib.request.urlretrieve(thistrueurl, file)
 
             except Exception as e:
                 pass
+        f.close()
 
         return item
