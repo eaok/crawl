@@ -32,5 +32,6 @@ def getcontent(url):
     f.close()
     print("Successfully generated " + img_url.split('/')[-1] + "!")
 
-url="https://cn.bing.com"
-getcontent(url)
+if __name__ == "__main__":
+    url="https://cn.bing.com"
+    getcontent(url)
