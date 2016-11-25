@@ -11,6 +11,6 @@ import scrapy
 class WallpaperItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    img_url_list = scrapy.Field()
+    img_urls = scrapy.Field()
     category_name = scrapy.Field()
     group_name = scrapy.Field()
