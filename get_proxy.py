@@ -15,15 +15,18 @@ class getProxy():
         self.header = {"User-Agent": self.user_agent}
         self.dbname="proxy.db"
         self.now = time.strftime("%Y-%m-%d")
-        self.url = 'http://www.58pic.com/'
+#        self.url = 'http://www.baidu.com/'
+#        self.url = 'http://www.58pic.com/'
+        self.url = 'http://www.ivsky.com/'
+        self.timeout = 0.5
 
-    def loop(self,page=5):
+    def loop(self, page):
         for i in range(1,page):
             print(i)
             self.getContent(i)
 
     def getContent(self, num):
-        reconnect = 4
+        reconnect = 2
         for i in range(0, reconnect):
             #国内高匿,国外为wn
             url = "http://www.xicidaili.com/nn/" + str(num)
@@ -69,15 +72,15 @@ class getProxy():
         #使用代理访问验证代理是否有效
 #        socket.setdefaulttimeout(1)
         try:
-            response = urllib.request.urlopen(req, timeout=0.5)
+            response = urllib.request.urlopen(req, timeout=self.timeout)
             if response.code==200:
-                print(ip + ':' + port + "\tcan work")
+                print('\033[1;31;40m' + ip + ':' + port + "\t\tcan work\033[0m")
                 return True
             else:
-                print(ip + ':' + port + "\tnot work")
+                print(ip + ':' + port + "\t\tnot work")
                 return False
         except :
-            print(ip + ':' + port + "\terror")
+            print(ip + ':' + port + "\t\terror")
             return False
 
     def insert_db(self, date, ip, port):
@@ -122,6 +125,6 @@ if __name__ == "__main__":
     now = datetime.datetime.now()
     print("Start at %s" % now)
     obj=getProxy()
-    obj.loop(5)
+    obj.loop(3)
 #    obj.check_db_pool()
 
