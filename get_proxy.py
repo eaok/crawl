@@ -17,8 +17,9 @@ class getProxy():
         self.now = time.strftime("%Y-%m-%d")
 #        self.url = 'http://www.baidu.com/'
 #        self.url = 'http://www.58pic.com/'
-        self.url = 'http://www.ivsky.com/'
-        self.timeout = 0.5
+        self.url = 'http://www.meizitu.com/'
+#        self.url = 'http://www.ivsky.com/'
+        self.timeout = 1
 
     def loop(self, page):
         for i in range(1,page):

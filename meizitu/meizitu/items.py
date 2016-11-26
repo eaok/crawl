@@ -13,5 +13,5 @@ class MeizituItem(scrapy.Item):
     # name = scrapy.Field()
     category_name = scrapy.Field()
     group_name = scrapy.Field()
-    img_url_list = scrapy.Field()
-    img_name_list = scrapy.Field()
+    img_urls = scrapy.Field()
+    img_names = scrapy.Field()
