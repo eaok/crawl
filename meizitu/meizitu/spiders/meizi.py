@@ -31,7 +31,7 @@ class MeiziSpider(scrapy.Spider):
 
         for j in range(0, len(group_urls)):
             group_url = group_urls[j]
-            item['group_name'] = group_names[j].replace('<b>', '').replace('</b>', '')
+            item['group_name'] = group_names[j].replace('<b>', '').replace('</b>', '').replace(' ','')
 
             request1 = scrapy.Request(group_url, callback=self.get_img_url)
             request1.meta['item'] = item

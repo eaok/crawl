@@ -120,20 +120,19 @@ USER_AGENT = [
 ]
 
 PROXIES = [
-     {'ip_port': '121.42.151.46:81', 'user_pass': ''},
-     {'ip_port': '112.74.35.77:80', 'user_pass': ''},
-     {'ip_port': '27.159.127.167:8118', 'user_pass': ''},
-     {'ip_port': '60.21.209.114:8080', 'user_pass': ''},
-     {'ip_port': '114.220.198.250:808', 'user_pass': ''},
-     {'ip_port': '42.63.28.160:8118', 'user_pass': ''},
-     {'ip_port': '171.111.149.86:8118', 'user_pass': ''},
-     {'ip_port': '1.83.251.248:80', 'user_pass': ''},
+     {'ip_port': '183.24.170.175:8118', 'user_pass': ''},
+     {'ip_port': '122.235.187.14:8118', 'user_pass': ''},
+     {'ip_port': '114.226.174.202:808', 'user_pass': ''},
      {'ip_port': '124.88.67.63:80', 'user_pass': ''},
-     {'ip_port': '124.88.67.52:843', 'user_pass': ''},
+     {'ip_port': '122.72.32.73:80', 'user_pass': ''},
      {'ip_port': '218.106.205.145:8080', 'user_pass': ''},
-     {'ip_port': '175.168.34.63:8118', 'user_pass': ''},
-     {'ip_port': '123.166.42.241:8118', 'user_pass': ''},
-     {'ip_port': '60.162.158.50:808', 'user_pass': ''}
+     {'ip_port': '185.103.21.53:80', 'user_pass': ''},
+     {'ip_port': '12.33.254.195:3128', 'user_pass': ''},
+     {'ip_port': '104.236.126.62:3128', 'user_pass': ''},
+     {'ip_port': '171.97.236.106:8080', 'user_pass': ''},
+     {'ip_port': '47.88.195.233:3128', 'user_pass': ''},
+     {'ip_port': '45.55.13.147:80', 'user_pass': ''},
+     {'ip_port': '61.19.248.145:80', 'user_pass': ''}
 ]
 
 # Obey robots.txt rules
